@@ -39,30 +39,42 @@ class Videojuego{
         $query = "INSERT INTO 
                     " . $this->table_name . "
                 SET 
-                    titulo=:titulo, desarrollador:desarrollador, year:year,
-                    consolas:consolas, clasificacion:clasificacion, descripcion=:descripcion,
-                    genero:genero, precio:precio, existencias:existencias";
-         
+                    titulo=:titulo, desarrollador=:desarrollador, year=:year,
+                    consolas=:consolas, clasificacion=:clasificacion, descripcion=:descripcion,
+                    genero=:genero, precio=:precio, existencias=:existencias";
+        
+
         // prepare query
         $stmt = $this->conn->prepare($query);
      
         // Se quitan caracteres especiales para evitar SQL injections
-        $this->titulo=htmlspecialchars(strip_tags($this->titulo)); 
-        $this->precio=htmlspecialchars(strip_tags($this->precio));
-        $this->descripcion=htmlspecialchars(strip_tags($this->descripcion));
+        $this->titulo        = htmlspecialchars(strip_tags($this->titulo)); 
+        $this->desarrollador = htmlspecialchars(strip_tags($this->desarrollador)); 
+        $this->consolas      = htmlspecialchars(strip_tags($this->consolas));
+        $this->clasificacion = htmlspecialchars(strip_tags($this->clasificacion));
+        $this->descripcion   = htmlspecialchars(strip_tags($this->descripcion));
+        $this->genero        = htmlspecialchars(strip_tags($this->genero));
+        $this->precio        = htmlspecialchars(strip_tags($this->precio));
+        $this->existencias   = htmlspecialchars(strip_tags($this->existencias));
      
         // bind values
-        $stmt->bindParam(":titulo", $this->titulo);
-        $stmt->bindParam(":precio", $this->precio);
-        $stmt->bindParam(":descripcion", $this->descripcion);
-        $stmt->bindParam(":year", $this->year);
+        $stmt->bindParam(":titulo",        $this->titulo);
+        $stmt->bindParam(":desarrollador", $this->desarrollador);
+        $stmt->bindParam(":year",          $this->year);
+        $stmt->bindParam(":consolas",      $this->consolas);
+        $stmt->bindParam(":clasificacion", $this->clasificacion);
+        $stmt->bindParam(":descripcion",   $this->descripcion);
+        $stmt->bindParam(":genero",        $this->genero);
+        $stmt->bindParam(":precio",        $this->precio);
+        $stmt->bindParam(":existencias",   $this->existencias);
+        
          
         // execute query
         if($stmt->execute()){
             return true;
         }else{
             echo "<pre>";
-                print_r($stmt->errorInfo());
+                print_r("Los datos pueden estar equivocados");
             echo "</pre>";
      
             return false;

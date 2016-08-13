@@ -49,7 +49,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="VideoJuegos.php">Videojuegos</a></li>
         <li><a href="Clientes.php">Clientes</a></li>
-        <li><a href="badges.html">Compras</a></li>
+        <li><a href="Compras.php">Ventas</a></li>
       </ul>
     </div>
   </nav>
@@ -106,49 +106,54 @@
 				        <h4 id="modal-product-title">Insertar datos</h4>
 				        <div class="row">
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Titulo</label>
+				                <input ng-model="email" type="email" class="validate" id="form-email" placeholder="Type name here..." required/>
+				                <label data-error="error" data-success="bien" for="email">Email</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Desarrollador</label>
+				                <input ng-model="username" type="text" class="validate" id="form-username" placeholder="Type name here..." required/>
+				                <label for="username" data-error="error" data-success="bien" >Username</label>
 				            </div>
 				 			
 
 				 			<div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Fecha</label>
+				                <input ng-model="telephone" type="number" class="validate" id="form-telephone" placeholder="number of 10 digits" required />
+				                <label data-error="error" data-success="bien" for="form-telephone">Telefono</label>
 				            </div>
 
 				            <div class="input-field col s12">
 				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Consolas</label>
+				                <label for="name" data-error="error" data-success="bien">Nombre</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <textarea ng-model="description" type="text" class="validate materialize-textarea" placeholder="Type description here..."></textarea>
-				                <label for="description">Descripcion</label>
+				                <input ng-model="apPaterno" id="form-apPaterno" type="text" class="validate materialize-textarea" placeholder="Apellido Paterno..." required>
+				                <label for="apPaterno" data-error="error" data-success="bien">Apellido Paterno</label>
 				            </div>
 				 
 				 			<div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Clasificación</label>
+				                <input ng-model="apMaterno" type="text" class="validate" id="form-apMaterno" placeholder="Type name here..." required/>
+				                <label for="apMaterno" data-error="error" data-success="bien" >Apellido Materno</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Genero</label>
+				                <input ng-model="direccion" type="text" class="validate" id="form-direccion" placeholder="Type adress here..." required/>
+				                <label for="direccion" data-error="error" data-success="bien" >Direccion</label>
+				            </div>
+							
+							<div class="input-field col s12">
+				                <input ng-model="cp" type="number" class="validate" id="form-cp" placeholder="Debe contener 5 numeros" required/>
+				                <label for="cp" data-error="error" data-success="bien">CP</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="price" type="text" class="validate" id="form-price" placeholder="Type price here..." />
-				                <label for="price">Precio</label>
+				                <input ng-model="password" type="password" class="validate" id="form-password" placeholder="Debe contener al menos 7 caracteres" required/>
+				                <label for="password" data-error="error" data-success="bien" >Contraseña</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Existencias</label>
+				                <input ng-model="puntos" type="number" class="validate" id="form-puntos" placeholder="Puntos iniciales" required/>
+				                <label for="puntos" data-error="error" data-success="bien" >132</label>
 				            </div>
 				 
 				 

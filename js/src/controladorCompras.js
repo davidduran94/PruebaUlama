@@ -15,22 +15,25 @@ app.controller ('comprasCtrl', function ($scope, $http){
 
     // clear variable / form values
     $scope.clearForm = function(){
-        $scope.id = "";
-        $scope.name = "";
-        $scope.description = "";
-        $scope.price = "";
+        $scope.idCliente = "";
+        $scope.subtotal = "";
+        $scope.total = "";
+        $scope.IVA = "";
+        $scope.juegos = "";
     }
 
     // create new product 
     $scope.createProduct = function(){
-             
-        // fields in key-value pairs
-        $http.post('create_product.php', {
-                'name' : $scope.name, 
-                'description' : $scope.description, 
-                'price' : $scope.price
-            }
-        ).success(function (data, status, headers, config) {
+        var data =  {
+                    'idCliente' : $scope.idCliente+'', 
+                    'subtotal'  : $scope.subtotal+'', 
+                    'total'     : $scope.total+'',
+                    'IVA'       : $scope.IVA+'',
+                    'juegos'    : $scope.juegos+''
+                    }; 
+        alert(JSON.stringify(data));
+        $http.post('create_venta.php', data)
+        .success(function (data, status, headers, config) {
             console.log(data);
             // tell the user new product was created
             Materialize.toast(data, 4000);
@@ -46,7 +49,7 @@ app.controller ('comprasCtrl', function ($scope, $http){
         });
     }
 
-    // read products
+    // Lee todos las compras de la BD
     $scope.getAll = function(){
         $http.get("read_compras.php")
             .success(function(response){

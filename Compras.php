@@ -45,7 +45,7 @@
 
 	<nav>
     <div class="nav-wrapper">
-      <a href="http://www.ulamalabs.co" class="brand-logo center">Prueba UlamaLabs.co</a>
+      <a href="http://www.ulama.co" class="brand-logo center">Prueba UlamaLabs.co</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="VideoJuegos.php">Videojuegos</a></li>
         <li><a href="Clientes.php">Clientes</a></li>
@@ -96,52 +96,32 @@
              <!-- modal for for creating new product -->
 				<div id="modal-product-form" class="modal">
 				    <div class="modal-content">
-				        <h4 id="modal-product-title">Insertar datos</h4>
+				        <h4 id="modal-product-title">Insertar datos de Venta</h4>
 				        <div class="row">
+
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Titulo</label>
+				                <input ng-model="idCliente" type="number" class="validate" id="form-idCliente" placeholder="Debe ser un numero" />
+				                <label data-error="error" data-success="bien" for="idCliente">No. de Cliente</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Desarrollador</label>
+				                <input ng-model="subtotal" type="number" class="validate" id="form-subtotal" placeholder="Debe ser un numero" />
+				                <label data-error="error" data-success="bien" for="subtotal">Subtotal</label>
 				            </div>
-				 			
 
 				 			<div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Fecha</label>
+				                <input ng-model="total" type="number" class="validate" id="form-total" placeholder="Debe ser un numero" />
+				                <label data-error="error" data-success="bien" for="total">Total</label>
+				            </div>
+
+							<div class="input-field col s12">
+				                <input ng-model="IVA" type="number" class="validate" id="form-IVA" placeholder="Debe ser un numero" />
+				                <label data-error="error" data-success="bien" for="IVA">IVA</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Consolas</label>
-				            </div>
-
-				            <div class="input-field col s12">
-				                <textarea ng-model="description" type="text" class="validate materialize-textarea" placeholder="Type description here..."></textarea>
-				                <label for="description">Descripcion</label>
-				            </div>
-				 
-				 			<div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Clasificación</label>
-				            </div>
-
-				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Genero</label>
-				            </div>
-
-				            <div class="input-field col s12">
-				                <input ng-model="price" type="text" class="validate" id="form-price" placeholder="Type price here..." />
-				                <label for="price">Precio</label>
-				            </div>
-
-				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Existencias</label>
+				                <input ng-model="juegos" id="form-juegos" type="text" class="validate" placeholder="Teclee id's de juegos vendidos"/>
+				                <label data-error="error" data-success="bien" for="juegos">Juegos</label>
 				            </div>
 				 
 				 

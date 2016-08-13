@@ -15,22 +15,34 @@ app.controller ('clientesCtrl', function ($scope, $http){
 
     // clear variable / form values
     $scope.clearForm = function(){
-        $scope.id = "";
-        $scope.name = "";
-        $scope.description = "";
-        $scope.price = "";
+        $scope.email     = "";
+        $scope.username  = "";
+        $scope.telephone = "";
+        $scope.name      = "";
+        $scope.apPaterno = "";
+        $scope.apMaterno = "";
+        $scope.direccion = "";
+        $scope.password  = "";
+        $scope.puntos    = "";
     }
 
     // create new product 
     $scope.createProduct = function(){
-             
+         var data =  {
+            'email'     : $scope.email, 
+            'userName'  : $scope.username, 
+            'telephone' : $scope.telephone+'',
+            'name'      : $scope.name,
+            'apPaterno' : $scope.apPaterno,
+            'apMaterno' : $scope.apMaterno,
+            'direccion' : $scope.direccion,
+            'password'  : $scope.password,
+            'puntos'    : $scope.puntos+''
+        };
+        alert(JSON.stringify(data));
         // fields in key-value pairs
-        $http.post('create_product.php', {
-                'name' : $scope.name, 
-                'description' : $scope.description, 
-                'price' : $scope.price
-            }
-        ).success(function (data, status, headers, config) {
+        $http.post('create_cliente.php', data)
+        .success(function (data, status, headers, config) {
             console.log(data);
             // tell the user new product was created
             Materialize.toast(data, 4000);

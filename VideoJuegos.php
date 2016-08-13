@@ -19,6 +19,11 @@
 	 
 	<!-- include angular js -->
 	<script src="js/libs/angular.min.js"></script>
+	
+	<!-- VALIDADOR	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+	-->
+
 
 	<style>
 			.width-30-pct{
@@ -45,7 +50,7 @@
 
 	<nav>
     <div class="nav-wrapper">
-      <a href="http://www.ulamalabs.co" class="brand-logo center">Prueba UlamaLabs.co</a>
+      <a href="http://www.ulamalabs.co" class="brand-logo center">Prueba Ulama.co</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="VideoJuegos.php">Videojuegos</a></li>
         <li><a href="Clientes.php">Clientes</a></li>
@@ -104,60 +109,57 @@
 				<div id="modal-product-form" class="modal">
 				    <div class="modal-content">
 				        <h4 id="modal-product-title">Insertar datos</h4>
+				        <form name="myForm" action="">
 				        <div class="row">
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Titulo</label>
+				                <input ng-model="titulo" type="text" class="validate" name="titulo" id="form-titulo" placeholder="GEARS of ..." required/>
+				                <label for="form-titulo" data-error="error" data-success="bien">Titulo</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Desarrollador</label>
-				            </div>
-				 			
-
-				 			<div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Fecha</label>
+				                <input required ng-model="desarrollador" type="text" class="validate" id="form-desarrollador" placeholder="UBISOFT" />
+				                <label data-error="error" data-success="bien" for="desarrollador" >Desarrollador</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Consolas</label>
+				                <input required ng-model="consolas" type="text" class="validate" id="form-consolas" placeholder="XBOX ONE, PS4 ... etc" />
+				                <label data-error="error" data-success="bien" for="consolas">Consolas</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <textarea ng-model="description" type="text" class="validate materialize-textarea" placeholder="Type description here..."></textarea>
-				                <label for="description">Descripcion</label>
+				                <textarea required ng-model="descripcion" type="text" class="validate materialize-textarea" placeholder="Type description here..." id="form-descripcion" ></textarea>
+				                <label data-error="error" data-success="bien" for="description">Descripcion</label>
 				            </div>
 				 
 				 			<div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Clasificación</label>
+				                <input required ng-model="clasificacion" type="text" class="validate" id="form-clasificacion" placeholder="R, M, Teen, etc" />
+				                <label data-error="error" data-success="bien" for="name">Clasificación</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Genero</label>
+				                <input required ng-model="genero" type="text" class="validate" id="form-genero" placeholder="Shooter, Racing, Simulation... etc" />
+				                <label data-error="error" data-success="bien" for="name">Genero</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="price" type="text" class="validate" id="form-price" placeholder="Type price here..." />
-				                <label for="price">Precio</label>
+				                <input required ng-model="precio" type="number" class="validate" id="form-precio" placeholder="Type price here..." />
+				                <label data-error="error" data-success="bien" for="price">Precio</label>
 				            </div>
 
 				            <div class="input-field col s12">
-				                <input ng-model="name" type="text" class="validate" id="form-name" placeholder="Type name here..." />
-				                <label for="name">Existencias</label>
+				                <input required ng-model="existencias" type="number" class="validate" id="form-existencias" placeholder="Number..." />
+				                <label data-error="error" data-success="bien" for="name">Existencias</label>
 				            </div>
-				 
-				 
+				 				
 				            <div class="input-field col s12">
 				                <a id="btn-create-product" class="waves-effect waves-light btn margin-bottom-1em" ng-click="createProduct()"><i class="material-icons left">add</i>Create</a>
 				 
 				                <a class="modal-action modal-close waves-effect waves-light btn margin-bottom-1em"><i class="material-icons left">close</i>Close</a>
 				            </div>
+
+				            
 				        </div>
+				        </form>
 				    </div>
 				</div>
 				<!-- floating button for creating product -->
@@ -169,5 +171,7 @@
 	</div> <!-- end container -->
 	<script type="text/javascript" src="js/src/app.js"></script>
 	<script type="text/javascript" src="js/src/controladorVideojuegos.js"></script>
+	<!-- Validador de formularios -->
+
 </body>
 </html>

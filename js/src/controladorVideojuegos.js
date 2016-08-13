@@ -15,34 +15,44 @@ app.controller ('videojuegosCtr', function ($scope, $http){
 
     // clear variable / form values
     $scope.clearForm = function(){
-        $scope.id = "";
-        $scope.name = "";
-        $scope.description = "";
-        $scope.price = "";
+        $scope.titulo        = "";
+        $scope.desarrollador = "";
+        $scope.consolas      = "";
+        $scope.descripcion   = "";
+        $scope.clasificacion = "";
+        $scope.genero        = "";
+        $scope.precio        = "";
+        $scope.existencias   = "";
     }
 
     // create new product 
     $scope.createProduct = function(){
-             
+        var data = {
+                'titulo'        : $scope.titulo, 
+                'desarrollador' : $scope.desarrollador, 
+                'consolas'      : $scope.consolas,
+                'descripcion'   : $scope.descripcion,
+                'clasificacion' : $scope.clasificacion,
+                'genero'        : $scope.genero,
+                'precio'        : $scope.precio+'',
+                'existencias'   : $scope.existencias+''
+            };
+        //alert(JSON.stringify(data));
         // fields in key-value pairs
-        $http.post('create_product.php', {
-                'name' : $scope.name, 
-                'description' : $scope.description, 
-                'price' : $scope.price
-            }
-        ).success(function (data, status, headers, config) {
-            console.log(data);
-            // tell the user new product was created
-            Materialize.toast(data, 4000);
-             
-            // close modal
-            $('#modal-product-form').closeModal();
-             
-            // clear modal content
-            $scope.clearForm();
-             
-            // refresh the list
-            $scope.getAll();
+        $http.post('create_game.php', data)
+            .success(function (data, status, headers, config) {
+                console.log(data);
+                // tell the user new product was created
+                Materialize.toast(data, 4000);
+                 
+                // close modal
+                $('#modal-product-form').closeModal();
+                 
+                // clear modal content
+                $scope.clearForm();
+                 
+                // refresh the list
+                $scope.getAll();
         });
     }
 

@@ -11,20 +11,20 @@ y define los metodos de crear y leer a la BD
 
 class Cliente{ 
     // database connection and table name 
-    private $conn; 
-    private $table_name = "cliente"; 
+    public $conn; 
+    public $table_name = "cliente"; 
  
     // object properties 
     public  $id;
-    private $email;
-	private $userName;
-	private $telephone;
-	private $name;
-	private $apPaterno;
-	private $apMaterno;
-	private $direccion;
-	private $password;
-	private $puntos;	
+    public $email;
+	public $userName;
+	public $telephone;
+	public $name;
+	public $apPaterno;
+	public $apMaterno;
+	public $direccion;
+	public $password;
+	public $puntos;	
  
     // constructor with $db as database connection 
     public function __construct($db){ 
@@ -38,23 +38,34 @@ class Cliente{
         $query = "INSERT INTO 
                     " . $this->table_name . "
                 SET 
-                    titulo=:titulo, desarrollador:desarrollador, year:year,
-                    consolas:consolas, clasificacion:clasificacion, descripcion=:descripcion,
-                    genero:genero, precio:precio, existencias:existencias";
+                    email=:email, userName=:userName, telephone=:telephone,
+                    name=:name, apPaterno=:apPaterno, apMaterno=:apMaterno,
+                    direccion=:direccion, password=:password, puntos=:puntos";
          
         // prepare query
         $stmt = $this->conn->prepare($query);
      
         // Se quitan caracteres especiales para evitar SQL injections
-        $this->titulo=htmlspecialchars(strip_tags($this->titulo)); 
-        $this->precio=htmlspecialchars(strip_tags($this->precio));
-        $this->descripcion=htmlspecialchars(strip_tags($this->descripcion));
+        $this->email		= htmlspecialchars(strip_tags($this->email)); 
+        $this->userName 	= htmlspecialchars(strip_tags($this->userName));
+        $this->telephone	= htmlspecialchars(strip_tags($this->telephone));
+        $this->name			= htmlspecialchars(strip_tags($this->name));
+        $this->apPaterno	= htmlspecialchars(strip_tags($this->apPaterno));
+        $this->apMaterno	= htmlspecialchars(strip_tags($this->apMaterno));
+        $this->direccion	= htmlspecialchars(strip_tags($this->direccion));
+        $this->password		= htmlspecialchars(strip_tags($this->password));
+        $this->puntos		= htmlspecialchars(strip_tags($this->puntos));
      
         // bind values
-        $stmt->bindParam(":titulo", $this->titulo);
-        $stmt->bindParam(":precio", $this->precio);
-        $stmt->bindParam(":descripcion", $this->descripcion);
-        $stmt->bindParam(":year", $this->year);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":userName", $this->userName);
+        $stmt->bindParam(":telephone", $this->telephone);
+        $stmt->bindParam(":name", $this->name);
+        $stmt->bindParam(":apPaterno", $this->apPaterno);
+        $stmt->bindParam(":apMaterno", $this->apMaterno);
+        $stmt->bindParam(":direccion", $this->direccion);
+        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":puntos", $this->puntos);
          
         // execute query
         if($stmt->execute()){

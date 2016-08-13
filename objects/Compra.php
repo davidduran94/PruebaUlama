@@ -11,47 +11,51 @@ y define los metodos de crear y leer a la BD
 
 class Compra{ 
     // database connection and table name 
-    private $conn; 
-    private $table_name = "compra"; 
+    public $conn; 
+    public $table_name = "compra"; 
  
     // object properties 
     public  $id;
-    private $fecha;
-	private $idCliente;
-	private $subtotal;
-	private $total;
-	private $IVA;
-	private $juegos;	
+    public $fecha;
+	public $idCliente;
+	public $subtotal;
+	public $total;
+	public $IVA;
+	public $juegos;	
  
     // constructor with $db as database connection 
     public function __construct($db){ 
         $this->conn = $db;
     }
 
-    // create product
+    // create Compra
     function create(){
          
         // query to insert record
         $query = "INSERT INTO 
                     " . $this->table_name . "
                 SET 
-                    titulo=:titulo, desarrollador:desarrollador, year:year,
-                    consolas:consolas, clasificacion:clasificacion, descripcion=:descripcion,
-                    genero:genero, precio:precio, existencias:existencias";
+                    idCliente=:idCliente, subtotal=:subtotal,
+                    total=:total, IVA=:IVA, juegos=:juegos";
          
         // prepare query
         $stmt = $this->conn->prepare($query);
      
         // Se quitan caracteres especiales para evitar SQL injections
-        $this->titulo=htmlspecialchars(strip_tags($this->titulo)); 
-        $this->precio=htmlspecialchars(strip_tags($this->precio));
-        $this->descripcion=htmlspecialchars(strip_tags($this->descripcion));
+        //$this->fecha     = htmlspecialchars(strip_tags($this->fecha)); 
+        $this->idCliente = htmlspecialchars(strip_tags($this->idCliente));
+        $this->subtotal  = htmlspecialchars(strip_tags($this->subtotal));
+        $this->total     = htmlspecialchars(strip_tags($this->total));
+        $this->IVA       = htmlspecialchars(strip_tags($this->IVA));
+        $this->juegos    = htmlspecialchars(strip_tags($this->juegos));
      
         // bind values
-        $stmt->bindParam(":titulo", $this->titulo);
-        $stmt->bindParam(":precio", $this->precio);
-        $stmt->bindParam(":descripcion", $this->descripcion);
-        $stmt->bindParam(":year", $this->year);
+        //$stmt->bindParam(":fecha",      $this->fecha);
+        $stmt->bindParam(":idCliente",  $this->idCliente);
+        $stmt->bindParam(":subtotal",   $this->subtotal);
+        $stmt->bindParam(":total",      $this->total);
+        $stmt->bindParam(":IVA",        $this->IVA);
+        $stmt->bindParam(":juegos",     $this->juegos);
          
         // execute query
         if($stmt->execute()){
